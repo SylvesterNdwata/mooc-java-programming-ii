@@ -35,6 +35,18 @@ public class SimpleDate {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = 31 * result + this.day;
+        result = 31 * result + this.month;
+        result = 31 * result + this.year;
+        
+        return result;
+    }
+    
+    
+
     public int differenceInYears(SimpleDate other) {
         if (earlier(other)) {
             return other.differenceInYears(this);
