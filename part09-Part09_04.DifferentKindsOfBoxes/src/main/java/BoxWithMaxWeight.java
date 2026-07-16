@@ -38,5 +38,4 @@ public class BoxWithMaxWeight extends Box {
         }
         return false;
     }
-    
 }
