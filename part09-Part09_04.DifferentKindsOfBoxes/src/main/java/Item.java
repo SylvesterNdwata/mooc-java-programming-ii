@@ -1,4 +1,7 @@
 
+import java.util.Objects;
+
+
 public class Item {
 
     private String name;
@@ -21,4 +24,16 @@ public class Item {
         return weight;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Item)) return false;
+        Item item = (Item) obj;
+        return Objects.equals(this.getName(), item.getName());
+    }
 }
