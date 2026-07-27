@@ -13,5 +13,17 @@ public class ReadingFilesPerLine {
         // test the method here
 
     }
+    
+    public static List<String> read(String file) {
+        List<String> allRows = new ArrayList<>();
+        
+        try {
+            Files.lines(Paths.get(file)).forEach(row -> allRows.add(row));
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        
+        return allRows;
+    }
 
 }
