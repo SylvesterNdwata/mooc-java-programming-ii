@@ -30,8 +30,8 @@ public class SavingsCalculatorApplication extends Application {
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setTitle("Savings Calculator");
 
-        XYChart.Series savingsLine = new XYChart.Series();
-        XYChart.Series savingsWithInterestLine = new XYChart.Series();
+        XYChart.Series savingsLine = new XYChart.Series<>();
+        XYChart.Series savingsWithInterestLine = new XYChart.Series<>();
 
         lineChart.getData().add(savingsLine);
         lineChart.getData().add(savingsWithInterestLine);
@@ -52,6 +52,8 @@ public class SavingsCalculatorApplication extends Application {
         savingsSlider.setShowTickMarks(true);
         savingsSlider.setShowTickLabels(true);
         Slider interestSlider = new Slider(0, 10, 2);
+        interestSlider.setShowTickMarks(true);
+        interestSlider.setShowTickLabels(true);
 
         innerPane1.setLeft(savings);
         innerPane1.setCenter(savingsSlider);
@@ -86,7 +88,7 @@ public class SavingsCalculatorApplication extends Application {
         arg0.show();
     }
 
-    private void updateChart(double savingValue, double interestValue, XYChart.Series savingsLine, XYChart.Series savingsWithInterestLine) {
+    private void updateChart(double savingValue, double interestValue, XYChart.Series<Number, Number> savingsLine, XYChart.Series<Number, Number> savingsWithInterestLine) {
 
         savingsLine.getData().clear();
         savingsWithInterestLine.getData().clear();
@@ -100,8 +102,10 @@ public class SavingsCalculatorApplication extends Application {
         for (int i = 1; i <= 30; i++) {
 
             savings += savingValue * 12;
-            savingsWithInterest = savingsWithInterest * (1.0 + interestValue / 100);
+            
             savingsWithInterest += savingValue * 12;
+            savingsWithInterest *= (1.0 + interestValue / 100);
+            
 
             savingsLine.getData().add(new XYChart.Data(i, savings));
             savingsWithInterestLine.getData().add(new XYChart.Data(i, savingsWithInterest));
