@@ -1,6 +1,5 @@
 package hurraa;
 
-import java.applet.AudioClip;
 import java.io.File;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,10 +16,6 @@ public class HurraaSovellus extends Application {
         BorderPane pane = new BorderPane();
 
         Button nappi = new Button("Hurray!");
-        
-//        final URL resource = getClass().getResource("Applause-Yannick_Lemieux.wav");
-//        
-//        AudioClip audioClip = new AudioClip(resource.toExternalForm());
         
         pane.setCenter(nappi);
 
